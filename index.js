@@ -34,9 +34,9 @@ while (!operation){
     }
 }
 
-let result = calculation()
 
-console.log(result);
+
+console.log(calculation());
 
 
 // Calculator 2 Multiple lines
