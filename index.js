@@ -1,49 +1,53 @@
 let rs = require('readline-sync');
 
 
-var input;
-var num1;
-var num2;
-var result;
-var operation = false;
+// Calculator 1 input on one line
 
-var equation;
 
-// Going for extra credit
+let equation ;
+let operator ;
+let operation = false;
 
-function doTheMath (numb1, operator, numb2){
-    if (operator === '+'){
-        return numb1 + numb2
+
+function calculation(){
+    if (operator === '+') {
+        return num1 + num2
     } else if (operator === '-'){
-       return numb1 - numb2
+        return num1 - num2
     } else if (operator === '*'){
-       return numb1 * numb2
-    } else if (operator === '/') {
-       return numb1 / numb2
-    } 
-}
-
-while (!operation) {
-    equation = rs.question('Please input equation ').split("")
-    if (equation[1] === '+'
-    || equation[1] === '-'
-    || equation[1] === '*'
-    || equation[1] === '/'
-    ){
-        operation = true;
-    } else {
-        console.log('That is not a valid operation');
+        return num1 * num2
+    } else if (operator === '/'){
+        return num1 / num2
     }
 }
 
-result = doTheMath(equation[0], equation[1], equation[2])
+while (!operation){
+    equation = rs.question('Insert equation.. ex.. 6+6  ')
+    var operatorPos = equation.search(/[\+\-\*\/]/);
+    operator = equation.slice(operatorPos, operatorPos + 1)
+    num1 = parseInt(equation.slice(0, (operatorPos)))
+    num2 = parseInt(equation.slice(operatorPos + 1))
+    if (operatorPos < 0){
+        console.log('Not a valid operation');
+    } else {
+        operation = true;
+    }
+}
+
+let result = calculation()
+
 console.log(result);
 
 
+// Calculator 2 Multiple lines
+// var input;
+// var num1;
+// var num2;
+// var result;
+// var operation = false;
 
 
 
-// This all works
 // while(!operation){
 //     input =rs.question(' I can only + - * /  What function would you like to do? ')
 //     if (input==='+'
